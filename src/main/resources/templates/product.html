@@ -5,7 +5,12 @@
 </head>
 <body>
     <ol>
-        <li th:each="product:${products}"><p th:text="${product.productName}"\></li>
+        <li th:each="product:${products}">
+        
+        <p th:text="${product.id}"\>
+        <p th:text="${product.productName}"\>
+        
+        </li>
     </ol>
 </body>
 </html>
