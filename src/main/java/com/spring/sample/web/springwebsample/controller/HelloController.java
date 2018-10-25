@@ -37,7 +37,9 @@ public class HelloController {
     }
     
     @GetMapping("/exception")
-    public String generateException() {
-        throw new NullPointerException();
+    public String generateException() throws Exception {
+        service.forceException();
+        
+        return "product";
     }
 }

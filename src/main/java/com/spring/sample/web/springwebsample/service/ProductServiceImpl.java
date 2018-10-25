@@ -38,4 +38,8 @@ public class ProductServiceImpl {
         
         productRepository.save(product);
     }
+    
+    public void forceException() throws Exception {
+        throw new NullPointerException();
+    }
 }
