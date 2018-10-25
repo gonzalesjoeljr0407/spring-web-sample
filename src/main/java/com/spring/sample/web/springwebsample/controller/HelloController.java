@@ -14,7 +14,7 @@ public class HelloController {
     
     @GetMapping("/loginPage/{value}")
     public String getLogin(@PathVariable("value") String value, Model model) {
-        Hello hello = new Hello("hello", "");
+        Hello hello = new Hello("hello", "world");
         model.addAttribute("hello", hello);
         model.addAttribute("value", value);
         return "login";
