@@ -6,12 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.sample.web.springwebsample.model.Hello;
 import com.spring.sample.web.springwebsample.service.ProductServiceImpl;
 
 @Controller
-@RequestMapping("/login")
 public class HelloController {
     
     ProductServiceImpl service;
@@ -21,12 +21,19 @@ public class HelloController {
         this.service = service;
     }
     
-    @GetMapping("/loginPage/{value}")
+    @GetMapping("/login/{value}")
     public String getLogin(@PathVariable("value") String value, Model model) {
         Hello hello = new Hello("hello", "world");
         model.addAttribute("hello", hello);
         model.addAttribute("value", value);
         model.addAttribute("products", service.getAllProducts());
         return "login";
+    }
+    
+    @GetMapping("/product/add")
+    public String addProduct(@RequestParam("product") String productName, Model model) {
+        service.addProduct(productName);
+        model.addAttribute("products", service.getAllProducts());        
+        return "product";
     }
 }

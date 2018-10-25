@@ -30,4 +30,12 @@ public class ProductServiceImpl {
         
         return products;
     }
+    
+    public void addProduct(String productName) {
+        Product product = new Product();
+        
+        product.setProductName(productName);
+        
+        productRepository.save(product);
+    }
 }
