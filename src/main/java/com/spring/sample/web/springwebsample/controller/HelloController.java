@@ -1,15 +1,18 @@
 package com.spring.sample.web.springwebsample.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/login")
 public class HelloController {
     
-    @GetMapping("/loginPage")
-    public String getLogin() {
+    @GetMapping("/loginPage/{value}")
+    public String getLogin(@PathVariable("value") String value, Model model) {
+        model.addAttribute("value", value);
         return "login";
     }
 }
